@@ -1,0 +1,13 @@
+{% extends 'articles/base.html' %}
+{% block content %}
+<h2>{{ title }}</h2>
+<form method="post">
+    {% csrf_token %}
+    Заголовок:<br>
+    <input type="text" name="title" value="{{ article.title|default:'' }}" style="width:100%"><br><br>
+    Текст:<br>
+    <textarea name="content" style="width:100%; height:100px">{{ article.content|default:'' }}</textarea><br><br>
+    <button>Сохранить</button>
+</form>
+<a href="{% url 'articles:article_list' %}">Назад</a>
+{% endblock %}

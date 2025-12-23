@@ -1,0 +1,17 @@
+{% extends 'articles/base.html' %}
+{% block content %}
+<h2>Все статьи</h2>
+<a href="{% url 'articles:article_create' %}">Новая статья</a>
+<ul>
+{% for a in articles %}
+    <li>
+        <strong>{{ a.title }}</strong><br>
+        {{ a.content }}
+        <br>
+        <a href="{% url 'articles:article_edit' a.id %}">[Редактировать]</a>
+    </li>
+{% empty %}
+    <li>Нет статей</li>
+{% endfor %}
+</ul>
+{% endblock %}
